@@ -36,6 +36,24 @@ public class FormularioControlador {
 		else if (comida == 4)
 			comid = "Cena";
 		
+		String postr = null;
+		if(postre == 1)
+			postr = "SI";
+		else
+			postr="NO";
+			
+		String tentacio = null;
+		if(tentacion == 1)
+			tentacio = "SI";
+		else
+			tentacio="NO";
+		
+		String hambr = null;
+		if(hambre == 1)
+			hambr = "SI";
+		else
+			hambr="NO";
+		
 		Connection con = new IConnection() {}.getConnection();
 
 		try {
@@ -54,7 +72,11 @@ public class FormularioControlador {
 				ps.setString(9, comidaPrincipal);
 				ps.setString(10, comidaSecundaria);
 				ps.setString(11, bebida);
-				ps.setString(12, x);
+				ps.setString(12, postr);
+				ps.setString(13, tentacio);
+				ps.setString(14, alimento);
+				ps.setString(15, hambr);
+				ps.setString(16, fechaHora);
 			}
 
 		} catch (SQLException e) {
