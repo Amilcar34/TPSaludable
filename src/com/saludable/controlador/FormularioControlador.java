@@ -53,14 +53,14 @@ public class FormularioControlador {
 			hambr = "SI";
 		else
 			hambr="NO";
-		
 		Connection con = new IConnection() {}.getConnection();
 
 		try {
 			
 			if (con != null) {
-				String sql = "INSERT INTO controlesdiarios(id, nombre, apellido, sexo, fecha_de_nacimiento, usuario, contraseña, tratamiento, comida, comida_principal, comida_secundaria, .bebida, postre, tentacion_de_otro_alimento, alimento_deseado, satisfaccion, fecha_y_hora_de_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				String sql = "INSERT INTO controlesdiarios(nombre, apellido, sexo, fecha_de_nacimiento, usuario, contraseña, tratamiento, comida, comida_principal, comida_secundaria, bebida, postre, tentacion_de_otro_alimento, alimento_deseado, satisfaccion, fecha_y_hora_de_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement ps = con.prepareStatement(sql);
+				
 				ps.setString(1, nombre);
 				ps.setString(2, apellido);
 				ps.setString(3, sex);
@@ -77,6 +77,9 @@ public class FormularioControlador {
 				ps.setString(14, alimento);
 				ps.setString(15, hambr);
 				ps.setString(16, fechaHora);
+				ps.execute();
+				ps.close();
+				System.out.println("Paciente cargado");
 			}
 
 		} catch (SQLException e) {
